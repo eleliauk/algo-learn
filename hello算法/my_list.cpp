@@ -1,4 +1,3 @@
-#include <bits/stdc++.h>
 using namespace std;
 /* 列表类 */
 class MyList
