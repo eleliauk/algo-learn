@@ -37,5 +37,5 @@ var addTwoNumbers = function(l1, l2) {
         if (l1) l1 = l1.next 
         if (l2) l2 = l2.next 
     }
-    return sum.next
+    return head.next
 };
