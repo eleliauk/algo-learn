@@ -8,4 +8,5 @@ function traverse(nums){
     for(const num of nums){
         count+=num
     }
+    
 }
