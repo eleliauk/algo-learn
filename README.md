@@ -4,6 +4,9 @@
 ### 准备前期使用C++学习 后期使用js写算法题
 
 # 刷题日记
+## 要写第二次的题
+160-相交链表：那个[题解](https://leetcode.cn/problems/intersection-of-two-linked-lists/solutions/811625/xiang-jiao-lian-biao-by-leetcode-solutio-a8jn/?envType=study-plan-v2&envId=top-100-liked)的办法好神奇再看看
+
 ## 2024.8.11
 做了leetcode的第二题 是考链表的
 感觉 链表自己学的一坨 
