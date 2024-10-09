@@ -1,3 +1,4 @@
+//这个是单向链表实现的
 var MyLinkedList = function() {
     this.size = 0;
     this.head = new ListNode(0);
