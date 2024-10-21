@@ -14,5 +14,5 @@ var removeDuplicates = function(nums) {
         }
         fast++
     }
-    return slow+1
+    return slow
 };
