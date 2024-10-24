@@ -21,7 +21,9 @@ var minWindow = function(s, t) {
                 valid++;
             }
         }
-        while(valid===Object.keys(needs).length){
+        while(valid===Object.keys(needs).length)
+            {
+
                // 在这里更新最小覆盖子串
                if (right - left < len) {
                 start = left;
