@@ -5,37 +5,42 @@
  *     this.next = (next===undefined ? null : next)
  * }
  */
-// 给你两个 非空 的链表，表示两个非负的整数。它们每位数字都是按照 逆序 的方式存储的，并且每个节点只能存储 一位 数字。
-
-// 请你将两个数相加，并以相同形式返回一个表示和的链表。
-
-// 你可以假设除了数字 0 之外，这两个数都不会以 0 开头。
-// 输入：l1 = [2,4,3], l2 = [5,6,4]
-// 输出：[7,0,8]
-// 解释：342 + 465 = 807.
 /**
  * @param {ListNode} l1
  * @param {ListNode} l2
  * @return {ListNode}
  */
+// 注意：javascript 代码由 chatGPT🤖 根据我的 java 代码翻译。
+// 本代码的正确性已通过力扣验证，如有疑问，可以对照我的 java 代码查看。
 
 var addTwoNumbers = function(l1, l2) {
-    // let val1=l1.val
-    // let val2=l2.val2
-    let sum=new ListNode("0")
-    // sum的头保留下来
-    let head=sum
-    //jinwei
-    let addOne=0
-    while (addOne || l1 || l2) {
-        let val1 = l1 !== null ? l1.val : 0 
-        let val2 = l2 !== null ? l2.val : 0 
-        let r1 = val1 + val2 + addOne
-        addOne = r1 >= 10 ? 1 : 0
-        sum.next = new ListNode(r1 % 10)
-        sum = sum.next 
-        if (l1) l1 = l1.next 
-        if (l2) l2 = l2.next 
+    // 在两条链表上的指针
+    let p1 = l1, p2 = l2;
+    // 虚拟头结点（构建新链表时的常用技巧）
+    let dummy = new ListNode(-1);
+    // 指针 p 负责构建新链表
+    let p = dummy;
+    // 记录进位
+    let carry = 0;
+    // 开始执行加法，两条链表走完且没有进位时才能结束循环
+    while (p1 !== null || p2 !== null || carry > 0) {
+        // 先加上上次的进位
+        let val = carry;
+        if (p1 !== null) {
+            val += p1.val;
+            p1 = p1.next;
+        }
+        if (p2 !== null) {
+            val += p2.val;
+            p2 = p2.next;
+        }
+        // 处理进位情况
+        carry = Math.floor(val / 10);
+        val = val % 10;
+        // 构建新节点
+        p.next = new ListNode(val);
+        p = p.next;
     }
-    return head.next
+    // 返回结果链表的头结点（去除虚拟头结点）
+    return dummy.next;
 };
