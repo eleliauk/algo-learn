@@ -7,14 +7,22 @@
 
 // 你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。
 
-// 你可以按任意顺序返回答案。
+// 你可以按任意顺序返回答案。 1 2 3 4 5 
 var twoSum = function(nums, target) {
-    for(let i=0;i<nums.length;i++){
-        for(let j=i+1;j<nums.length;j++)
-        {
-            if(nums[i]+nums[j]===target){
-                return [i,j];
-            }
+    const map = new Map();
+    
+    for (let i = 0; i < nums.length; i++) {
+        const complement = target - nums[i];
+        
+        // 检查是否存在与当前数匹配的另一个数
+        if (map.has(complement)) {
+            return [map.get(complement), i];
         }
+        
+        // 将当前数及其索引存入哈希表
+        map.set(nums[i], i);
     }
-};  
+    
+    // 如果没有找到符合条件的数对，返回空数组
+    return [];
+};
