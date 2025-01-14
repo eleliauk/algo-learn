@@ -3,20 +3,20 @@
  * @return {number[]}
  */
 var plusOne = function(digits) {
-    var nums = digits.length - 1;
-    digits[nums] += 1; 
-
-    while (nums >= 0) {
-        if (digits[nums] > 9) { 
-            digits[nums] = 0;
-            if (nums === 0) { 
-                digits.unshift(1);
-            } else {
-                digits[nums - 1] += 1; 
-            }
+   var len=digits.length-1
+   digits[len]+=1;
+   let num=len
+   while(num>0){
+        if(digits[num]==10){
+            digits[num-1]+=1
+            digits[num]=0
         }
-        nums--;
-    }
+        num--
+   }
+   if(digits[0]==10){
+    digits.unshift(1)
+    digits[0]=0
+}
+   return digits
 
-    return digits;
 };
