@@ -10,16 +10,14 @@
  * @return {ListNode}
  */
 var swapPairs = function(head) {
-    if (head === null || head.next === null) {
-        return head;
+    let ret = new ListNode(0, head), temp = ret;
+    while(temp.next&&temp.next.next){
+        let pre=temp.next;
+        let cur=temp.next.next;
+        pre.next=cur.next;
+        cur.next=pre;
+        temp.next=cur;
+        temp=temp.next.next
     }
-    let first = head;
-    let second = head.next;
-    let others = head.next.next;
-    // 先把前两个元素翻转
-    second.next = first;
-    // 利用递归定义，将剩下的链表节点两两翻转，接到后面
-    first.next = swapPairs(others);
-    // 现在整个链表都成功翻转了，返回新的头结点
-    return second;
+    return head;
 };
