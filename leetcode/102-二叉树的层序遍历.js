@@ -17,18 +17,14 @@ var levelOrder = function(root) {
         return res
     }
     while(queue.length!==0){
+        let cur=[]
         let length = queue.length;
-        //放每一层的节点
-        let cur=[];
-        //   1
-        //  / \
-        // 2   3
-        for(let i = 0;i < length; i++) {
-            let node = queue.shift();
-            curLevel.push(node.val);
-            // 存放当前层下一层的节点
-            node.left && queue.push(node.left);
-            node.right && queue.push(node.right);
+        for(let i=0;i<length;i++){
+            let node=queue.shift()
+            cur.push(node.val)
+            node.left&&cur.push(node.left)
+            node.right&&cur.push(node.right)
+            
         }
         res.push(cur)
     }
