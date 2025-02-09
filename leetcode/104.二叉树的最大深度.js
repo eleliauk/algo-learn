@@ -8,26 +8,28 @@
  */
 /**
  * @param {TreeNode} root
- * @return {number[][]}
+ * @return {number}
  */
-var levelOrder = function(root) {
+var maxDepth = function(root) {
     let res=[],queue=[];
     if(!root){
         return res
     }
-     queue.push(root)
+    queue.push(root)
     while(queue.length>0){
-        let cur=[];
         let len=queue.length
+        let cur=[];
         for(let i=0;i<len;i++){
             let node=queue.shift()
             cur.push(node.val)
-            if (node.left)
-                queue.push(node.left);
-            if (node.right)
-                queue.push(node.right);
+            if(node.left){
+                queue.push(node.left)
+            }
+            if(node.right){
+                queue.push(node.right)
+            }
+
         }
-        res.push(cur)
     }
-    return res
+    return res.length;
 };
