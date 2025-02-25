@@ -36,6 +36,7 @@ function right_bound(nums, target) {
             left = mid + 1;
         }
     }
+    
     // 这里改为检查 right 越界的情况，见下图
     if (right < 0 || nums[right] !== target) {
         return -1;
