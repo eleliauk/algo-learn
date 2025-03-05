@@ -8,26 +8,29 @@
  */
 /**
  * @param {TreeNode} root
- * @return {number[][]}
+ * @return {number[]}
  */
 var rightSideView = function(root) {
-    let res=[],queue=[];
-    if(!root){
-        return res
+    let res=[]
+    let path=[]
+    path.push(root)
+    if(root==null){
+        return []
     }
-     queue.push(root)
-    while(queue.length>0){
-        let cur=[];
-        let len=queue.length
+    while(path.length>0){
+        let len=path.length
+        let cur=[]
         for(let i=0;i<len;i++){
-            let node=queue.shift()
-            cur.push(node.val)  
-            if (node.right)
-                queue.push(node.right);
-            if (node.left)
-                queue.push(node.left);
+            let node=path.shift()
+            cur.push(node.val)
+            if(node.left){
+                path.push(node.left)
+            }
+            if(node.right){
+                path.push(node.right)
+            }
         }
-        res.push(cur[0])
+        res.push(cur[cur.length-1])
     }
     return res
 };
