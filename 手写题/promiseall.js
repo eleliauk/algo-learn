@@ -1,16 +1,22 @@
 function myPromiseAll(iterable){
-    return new Promise((reject,resolve)=>{
-        let count=0
-        let arr=Array.from(iterable)
-        for(let i=0;i<arr.lengh;i++){
-            Promise.resolve(arr[i]).then(
-                res=>{arr[i]=res
-                    count++
-                    if(count===arr.length){
-                        resolve(result)
-                    }
-                }
-            ).catch(err=>reject(err))
+    const result = []
+    let count = 0
+   return new Promise((reject,resolve)=>{
+    const addValue=(index, value)=>{
+        result[index]=value
+        count++
+        if(count===iterable.length){
+           resolve(result)
+        }
+    }
+    iterable.forEach((promise,index)=>{
+        if(promise instanceof Promise){
+            promise.then(res => {
+                addData(index, res)
+            }, err => reject(err))
+        }else{
+            addValue(promise)
         }
     })
+   })
 }
